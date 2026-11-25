@@ -31,12 +31,12 @@ footer{color:#999;font-size:13px;margin-top:40px}
 <table>
 <tr><th>البيانات</th><th>أين تُحفظ</th><th>هل تغادر جهازك؟</th></tr>
 <tr><td>مفاتيح API التي تدخلها</td><td>chrome.storage.local على جهازك فقط</td><td>تُرسل فقط إلى خادم المزوّد نفسه (Google/OpenAI/…) عبر HTTPS للمصادقة</td></tr>
-<tr><td>التحاضير والدروس المستوردة والصور</td><td>chrome.storage.local و IndexedDB على جهازك</td><td>تُرسل أجزاء منها إلى مزوّد الذكاء الاصطناعي الذي اخترته أنت عند طلب التوليد أو الإكمال فقط</td></tr>
+<tr><td>التحاضير والدروس المستوردة والصور</td><td>chrome.storage.local و IndexedDB على جهازك</td><td>تُرسل أجزاء منها إلى مزوّد الذكاء الاصطناعي الذي اخترته أنت عند طلب التوليد أو الإكمال فقط. وتُرفع صور التحضير إلى خادم نور نفسه عند تعبئة الدرس، بجلسة دخولك الحالية.</td></tr>
 <tr><td>بريدك الإلكتروني (التسجيل)</td><td>chrome.storage.local على جهازك</td><td>لا يُرسل إلى أي جهة؛ «التسجيل الموثّق» يقرأ بريد حسابك في المتصفح محليًا عبر واجهة chrome.identity</td></tr>
 </table>
 
 <h3>مزوّدو الذكاء الاصطناعي (أطراف ثالثة تختارها أنت)</h3>
-<p>عند استخدام التوليد أو البحث، يُرسل عنوان الدرس وسياقه (المادة/الصف/الوحدة) ومحتوى التحضير ذي الصلة إلى المزوّد الذي فعّلته في الإعدادات (Google Gemini أو OpenAI أو Anthropic أو OpenRouter أو خدمة تختارها). تخضع هذه البيانات لسياسة خصوصية ذلك المزوّد. الإضافة لا ترسل شيئًا إلى أي مزوّد لم تفعّله.</p>
+<p>عند استخدام التوليد أو البحث، يُرسل عنوان الدرس وسياقه (المادة/الصف/الوحدة) ومحتوى التحضير ذي الصلة إلى المزوّد الذي فعّلته في الإعدادات: Google Gemini أو OpenAI أو Anthropic أو OpenRouter أو Groq أو Cerebras أو Mistral أو خدمة مخصصة تدخل عنوانها بنفسك. وفي «استوديو الكتب» تُرسل أيضًا صفحات الكتاب المدرسي أو دليل المعلم التي تختارها (صور أو ملف PDF) إلى المزوّد نفسه لاستخراج الدرس. لا تُقرأ صفحة نور ولا تُرسل إلى أي مزوّد؛ يُقرأ محليًا فقط اسم الصف والمادة. تخضع هذه البيانات لسياسة خصوصية ذلك المزوّد. الإضافة لا ترسل شيئًا إلى أي مزوّد لم تفعّله.</p>
 
 <h3>بيانات الطلاب</h3>
 <p>لا تجمع الإضافة أسماء الطلاب ولا تُرسلها. تقرير «فحص الصفحة» التشخيصي يُخفي أسماء الطلاب وأرقامهم ويُقنّع المعرفات في الروابط قبل نسخه.</p>
@@ -57,7 +57,8 @@ footer{color:#999;font-size:13px;margin-top:40px}
 <p class="summary">Summary: the developer collects nothing. No servers of ours, no tracking, no ads, no data sale.</p>
 <ul>
 <li>API keys you enter are stored only in chrome.storage.local on your device and are sent only to the corresponding provider's servers over HTTPS for authentication.</li>
-<li>Lesson content is sent to an AI provider (Google Gemini, OpenAI, Anthropic, OpenRouter, or a custom endpoint) only when you use generation/search features, under your own keys and choice.</li>
+<li>Lesson content is sent to an AI provider (Google Gemini, OpenAI, Anthropic, OpenRouter, Groq, Cerebras, Mistral, or a custom endpoint you enter) only when you use generation/search features, under your own keys and choice. In Book Studio, the textbook or teacher-guide pages you select (images or PDF) are also sent to that provider to extract the lesson. Noor pages themselves are never sent to a provider; only the grade and subject names are matched locally.</li>
+<li>Lesson images are uploaded to Noor's own server when a lesson is filled, using your current Noor session.</li>
 <li>Your registration email stays on your device; "verified registration" reads your Chrome profile email locally via the chrome.identity API and never transmits it.</li>
 <li>Student names are never collected; the diagnostic "page scan" report masks them.</li>
 <li>Optional ntfy.sh notifications (Book Studio only) send the notification text to the public ntfy.sh topic you type yourself; leave the field empty to disable.</li>
